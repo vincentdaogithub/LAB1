@@ -24,5 +24,7 @@ GO
 INSERT INTO tbl_User
 VALUES
     ('AD0000', 'admin', 'John Doe', 'AD'),
-    ('US0000', '12345', 'Jane Doe', 'US');
+    ('US0000', '12345', 'Jane Doe', 'US'),
+    ('AD0001', 'admin', 'John Roe', 'AD'),
+    ('US0001', '12345', 'Jane Roe', 'US');
 GO

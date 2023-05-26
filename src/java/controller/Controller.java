@@ -16,11 +16,26 @@ public class Controller extends HttpServlet {
     private final String LOGIN = "login";
     private final String LOGIN_URL = "/LoginServlet";
 
+    private final String SEARCH = "search";
+    private final String SEARCH_URL = "/SearchServlet";
+
+    private final String DELETE = "delete";
+    private final String DELETE_URL = "/DeleteServlet";
+
+    private final String UPDATE = "update";
+    private final String UPDATE_URL = "/UpdateServlet";
+
+    private final String CREATE = "create";
+    private final String CREATE_URL = "/CreateServlet";
+
     private final String INDEX = "index";
     private final String INDEX_URL = "index.jsp";
 
     private final String ADMIN = "admin";
     private final String ADMIN_URL = "admin.jsp";
+
+    private final String CREATE_PAGE = "create";
+    private final String CREATE_PAGE_URL = "create.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,6 +45,22 @@ public class Controller extends HttpServlet {
             switch (action) {
                 case LOGIN:
                     url = LOGIN_URL;
+                    break;
+
+                case SEARCH:
+                    url = SEARCH_URL;
+                    break;
+
+                case DELETE:
+                    url = DELETE_URL;
+                    break;
+
+                case UPDATE:
+                    url = UPDATE_URL;
+                    break;
+
+                case CREATE:
+                    url = CREATE_URL;
                     break;
 
                 default:
@@ -50,6 +81,10 @@ public class Controller extends HttpServlet {
 
                 case ADMIN:
                     pageUrl = ADMIN_URL;
+                    break;
+
+                case CREATE_PAGE:
+                    pageUrl = CREATE_PAGE_URL;
                     break;
 
                 default:

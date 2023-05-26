@@ -9,16 +9,17 @@
     <body>
         <header>
             <h1>Login</h1>
+            <hr />
         </header>
 
         <main>
             <c:choose>
                 <c:when test="${sessionScope.user != null && sessionScope.user.role == 'AD'}">
-                    <a href="index.jsp">To Admin</a>
+                    <a href="/LAB1/c?p=admin">To Admin</a>
                 </c:when>
 
                 <c:when test="${sessionScope.user != null && sessionScope.user.role == 'US'}">
-                    <a href="admin.jsp">To User</a>
+                    <a href="#">To User</a>
                 </c:when>
 
                 <c:otherwise>
