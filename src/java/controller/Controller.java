@@ -37,6 +37,9 @@ public class Controller extends HttpServlet {
     private final String CREATE_PAGE = "create";
     private final String CREATE_PAGE_URL = "create.jsp";
 
+    private final String USER = "user";
+    private final String USER_URL = "user.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("a");
@@ -85,6 +88,10 @@ public class Controller extends HttpServlet {
 
                 case CREATE_PAGE:
                     pageUrl = CREATE_PAGE_URL;
+                    break;
+
+                case USER:
+                    pageUrl = USER_URL;
                     break;
 
                 default:

@@ -33,6 +33,9 @@ public class UserDAO {
     private static final String INSERT_USER = "INSERT INTO tbl_User "
             + "VALUES (?, ?, ?, ?)";
 
+    private static final String CHECK_USER_EXISTS = "SELECT * FROM tbl_User "
+            + "WHERE userID = ? COLLATE Latin1_General_CS_AS";
+
     public static final User getUser(String userID, String password) {
         if (userID == null || password == null) {
             LOGGER.log(Level.SEVERE, "Null parameters");
@@ -231,6 +234,35 @@ public class UserDAO {
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, e.getMessage());
                 con.rollback();
+            }
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        return false;
+    }
+
+    public static final boolean checkUserExists(String userID) {
+        if (userID == null) {
+            LOGGER.log(Level.SEVERE, "Null parameters");
+            return false;
+        }
+
+        try (
+                Connection con = DBUtils.getConnection();
+        ) {
+            con.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+            try (
+                    PreparedStatement checkUserExistsPst = con.prepareStatement(
+                            CHECK_USER_EXISTS,
+                            ResultSet.TYPE_SCROLL_INSENSITIVE,
+                            ResultSet.CONCUR_READ_ONLY);
+            ) {
+                checkUserExistsPst.setString(1, userID);
+                ResultSet result = checkUserExistsPst.executeQuery();
+                return result.next();
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, e.getMessage());
             }
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, e.getMessage());

@@ -19,7 +19,7 @@
                 </c:when>
 
                 <c:when test="${sessionScope.user != null && sessionScope.user.role == 'US'}">
-                    <a href="#">To User</a>
+                    <a href="/LAB1/c?p=user">To User</a>
                 </c:when>
 
                 <c:otherwise>
@@ -38,6 +38,8 @@
 
                         <input type="submit" value="Log in" />
                     </form>
+
+                    <a href="/LAB1/c?p=create">Create new account</a>
                 </c:otherwise>
             </c:choose>
         </main>

@@ -30,6 +30,12 @@ public class CreateServlet extends HttpServlet {
         }
 
         String userID = request.getParameter("txtUserID");
+        if (UserDAO.checkUserExists(userID)) {
+            LOGGER.log(Level.SEVERE, "User already exists");
+            request.setAttribute("userExisted", true);
+            return;
+        }
+
         String password = request.getParameter("txtPassword");
         String fullName = request.getParameter("txtFullName");
         String role;

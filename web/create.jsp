@@ -10,6 +10,8 @@
         <header>
             <h1>Create</h1>
             <hr />
+
+            <a href="/LAB1/c?p=index">Back</a>
         </header>
 
         <main>
@@ -43,7 +45,7 @@
                     </form>
                 </c:when>
 
-                <c:when test="${sessionScope.user != null && sessionScope.user.role == 'US'}">
+                <c:when test="${sessionScope.user == null}">
                     <form action="/LAB1/c?a=create&ct=us" method="post">
                         <div class="input-container">
                             <label for="user-id">User ID</label>
@@ -65,7 +67,7 @@
                 </c:when>
 
                 <c:otherwise>
-                    <p>Why are you even here?</p>
+                    <h1>Why are you here?</h1>
                     <a href="/LAB1/c?a=create">Back to Index</a>
                 </c:otherwise>
             </c:choose>

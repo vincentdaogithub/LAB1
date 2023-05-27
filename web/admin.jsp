@@ -11,6 +11,8 @@
         <header>
             <h1>Admin</h1>
             <hr />
+
+            <a href="/LAB1/c?p=index">Back</a>
         </header>
 
         <main>
@@ -72,7 +74,7 @@
                 </c:when>
 
                 <c:otherwise>
-
+                    <h2>Who are you?</h2>
                 </c:otherwise>
             </c:choose>
         </main>
