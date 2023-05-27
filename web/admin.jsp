@@ -5,41 +5,47 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="main.css" />
         <title>Admin</title>
     </head>
     <body>
         <header>
-            <h1>Admin</h1>
-            <hr />
-
-            <a href="/LAB1/c?p=index">Back</a>
+            <h1 class="title">Admin</h1>
         </header>
 
         <main>
+            <section>
+                <a href="/LAB1/c?p=index">Back</a>
+            </section>
+
             <c:choose>
                 <c:when test="${sessionScope.user != null && sessionScope.user.role == 'AD'}">
-                    <h2>Welcome, ${f:escapeXml(sessionScope.user.fullName)}</h2>
+                    <section>
+                        <h2>Welcome, ${f:escapeXml(sessionScope.user.fullName)}</h2>
+                    </section>
 
-                    <form action="/LAB1/c?a=search&p=admin" method="post">
-                        <h2>Search</h2>
+                    <section>
+                        <form class="form-normal" action="/LAB1/c?a=search&p=admin" method="post">
+                            <h2>Search</h2>
 
-                        <div>
-                            <label for="full-name">Full name</label>
-                            <input id="full-name" type="text" name="txtFullName" placeholder="full name..." required />
-                        </div>
+                            <div class="input">
+                                <label for="full-name">Full name</label>
+                                <input id="full-name" type="text" name="txtFullName" placeholder="full name..." required />
+                            </div>
 
-                        <input type="submit" value="Search" />
-                    </form>
+                            <input type="submit" value="Search" />
+                        </form>
 
-                    <a href="/LAB1/c?p=create">Create user</a>
+                        <a href="/LAB1/c?p=create">Create user</a>
+                    </section>
 
-                    <c:choose>
-                        <c:when test="${empty requestScope.users}">
-                            <h2>No user was found</h2>
-                        </c:when>
+                    <section>
+                        <c:choose>
+                            <c:when test="${empty requestScope.users}">
+                                <h2>No user was found</h2>
+                            </c:when>
 
-                        <c:otherwise>
-                            <section class="user-container">
+                            <c:otherwise>
                                 <table>
                                     <tr>
                                         <th>No.</th>
@@ -68,13 +74,14 @@
                                         </tr>
                                     </c:forEach>
                                 </table>
-                            </section>
-                        </c:otherwise>
-                    </c:choose>
+                            </c:otherwise>
+                        </c:choose>
                 </c:when>
 
                 <c:otherwise>
-                    <h2>Who are you?</h2>
+                    <section>
+                        <h2>Who are you?</h2>
+                    </section>
                 </c:otherwise>
             </c:choose>
         </main>

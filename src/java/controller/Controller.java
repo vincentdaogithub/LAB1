@@ -28,6 +28,9 @@ public class Controller extends HttpServlet {
     private final String CREATE = "create";
     private final String CREATE_URL = "/CreateServlet";
 
+    private final String LOGOUT = "logout";
+    private final String LOGOUT_URL = "/LogOutServlet";
+
     private final String INDEX = "index";
     private final String INDEX_URL = "index.jsp";
 
@@ -64,6 +67,10 @@ public class Controller extends HttpServlet {
 
                 case CREATE:
                     url = CREATE_URL;
+                    break;
+
+                case LOGOUT:
+                    url = LOGOUT_URL;
                     break;
 
                 default:
